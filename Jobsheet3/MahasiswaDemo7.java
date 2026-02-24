@@ -30,6 +30,7 @@ public class MahasiswaDemo7 {
             System.out.println("Kelas       : "+ arrayOfMahasiswa[i].kelas);
             System.out.println("IPK         : "+ arrayOfMahasiswa[i].ipk);
             System.out.println("----------------------------------");
+            arrayOfMahasiswa[i].cetakInfo();
         }
     }
 }

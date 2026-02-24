@@ -3,11 +3,17 @@ import java.util.Scanner;
 public class MatakuliahDemo7 {
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
-        Matakuliah7[] arrayOfMatakuliah = new Matakuliah7[3];
+
+        //meminta input jumlah MK
+        System.out.print("Masukkan jumlah matakuliah: ");
+        int jumlahMk = Integer.parseInt(sc.nextLine());
+
+        //variabel jumlahMk sbg ukuran array
+        Matakuliah7[] arrayOfMatakuliah = new Matakuliah7[jumlahMk];
         String kode, nama, dummy;
         int sks, jumlahJam;
 
-        for(int i = 0; i < 3; i++) {
+        for(int i = 0; i < jumlahMk; i++) {
             System.out.println("Masukkan Data Matakuliah ke-" + (i + 1));
             System.out.print("Kode       : ");
             kode = sc.nextLine();
@@ -24,24 +30,26 @@ public class MatakuliahDemo7 {
             arrayOfMatakuliah[i] = new Matakuliah7(kode, nama, sks, jumlahJam);
         }
         
-        for(int i=0; i < 3; i++) {
+        for(int i=0; i < jumlahMk; i++) {
             System.out.println("Data Matakuliah ke-" + (i + 1));
             arrayOfMatakuliah[i].cetakInfo();
         }
 
-        System.out.println("== Tambah Data Matakuliah Baru ==");
-        System.out.print("Kode       : ");
-        kode = sc.nextLine();
-        System.out.print("Nama       : ");
-        nama = sc.nextLine();
-        System.out.print("Sks        : ");
-        sks = Integer.parseInt(sc.nextLine());
-        System.out.print("Jumlah Jam : ");
-        jumlahJam = Integer.parseInt(sc.nextLine());
+        if (jumlahMk > 0) {
+            System.out.println("== Tambah Data Matakuliah Baru ==");
+            System.out.print("Kode       : ");
+            kode = sc.nextLine();
+            System.out.print("Nama       : ");
+            nama = sc.nextLine();
+            System.out.print("Sks        : ");
+            sks = Integer.parseInt(sc.nextLine());
+            System.out.print("Jumlah Jam : ");
+            jumlahJam = Integer.parseInt(sc.nextLine());
 
-        arrayOfMatakuliah[0].tambahData(kode, nama, sks, jumlahJam);
+            arrayOfMatakuliah[0].tambahData(kode, nama, sks, jumlahJam);
 
-        System.out.println("Data ke-1 telah ditambah:");
-        arrayOfMatakuliah[0].cetakInfo();
+            System.out.println("Data ke-1 telah ditambah:");
+            arrayOfMatakuliah[0].cetakInfo();
+        }
     }
 }

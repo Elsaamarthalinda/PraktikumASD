@@ -2,9 +2,9 @@ package Jobsheet2;
 
 public class MahasiswaMain7 {
     public static void main(String[] args) {
-        
-        // objek konstruktor default
+
         Mahasiswa mhs1 = new Mahasiswa();
+
         mhs1.nama = "Muhammad Ali Farhan";
         mhs1.nim = "2241720171";
         mhs1.kelas = "SI 2J";
@@ -15,7 +15,6 @@ public class MahasiswaMain7 {
         mhs1.updateIpk(3.60);
         mhs1.tampilkanInformasi();
 
-        // objek konstruktor parameter
         Mahasiswa mhs2 = new Mahasiswa("Elsa Marthalinda", "254107020204", 3.53, "TI 1G");
         mhs2.tampilkanInformasi();
     }
@@ -27,12 +26,10 @@ class Mahasiswa {
     String kelas;
     double ipk;
 
-    // konstruktor default
     Mahasiswa() {
 
     }
 
-    // konstruktor parameter
     Mahasiswa(String nama, String nim, double ipk, String kelas) {
         this.nama = nama;
         this.nim = nim;
@@ -43,9 +40,9 @@ class Mahasiswa {
     void tampilkanInformasi() {
         System.out.println("Nama: " + nama);
         System.out.println("NIM: " + nim);
-        System.out.println("IPK: " + ipk);
         System.out.println("Kelas: " + kelas);
-        System.out.println("------------------------");
+        System.out.println("IPK: " + ipk);
+        System.out.println("--------------------");
     }
 
     void ubahKelas(String kelasBaru) {

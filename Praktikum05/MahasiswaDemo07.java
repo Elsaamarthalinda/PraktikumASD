@@ -1,6 +1,6 @@
 package Praktikum05;
-
 import java.util.Scanner;
+
 public class MahasiswaDemo07 {
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
@@ -28,6 +28,11 @@ public class MahasiswaDemo07 {
         list.tampil();
         System.out.println("Data mahasiswa setelah sorting berdasarkan IPK (DESC): ");
         list.bubbleSort();
+        list.tampil();
+
+        // tambahan kode program
+        System.out.println("Data yang sudah terurut menggunakan SELECTION SORT (ASC): ");
+        list.selectionSort();
         list.tampil();
     }
 }

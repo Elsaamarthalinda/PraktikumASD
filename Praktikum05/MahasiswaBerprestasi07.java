@@ -1,6 +1,10 @@
 package Praktikum05;
 public class MahasiswaBerprestasi07 {
-    Mahasiswa07[] listMhs = new Mahasiswa07 [5];
+    Mahasiswa07[] listMhs;
+
+    MahasiswaBerprestasi07(int jumlah) {
+        listMhs = new Mahasiswa07[jumlah];
+    }
     int idx;
 
     void tambah(Mahasiswa07 m) {

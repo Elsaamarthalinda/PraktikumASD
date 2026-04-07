@@ -4,8 +4,11 @@ import java.util.Scanner;
 public class MahasiswaDemo07 {
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
-        MahasiswaBerprestasi07 list = new MahasiswaBerprestasi07();
-        int jmlMhs = 5;
+        System.out.print("Masukkan jumlah mahasiswa: ");
+        int jmlMhs = sc.nextInt();
+        sc.nextLine();
+        MahasiswaBerprestasi07 list = new MahasiswaBerprestasi07(jmlMhs);
+
 
         for (int i = 0; i < jmlMhs; i++) {
             System.out.println("Masukkan data mahasiswa ke-" + (i + 1));

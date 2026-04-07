@@ -74,10 +74,10 @@ public class MahasiswaBerprestasi07 {
         int mid;
         if (right >= left) {
             mid = (left + right) / 2;
-            if (cari == listMhs[mid].ipk) {
+        if (cari == listMhs[mid].ipk) {
             return mid;
         }
-        else if (listMhs[mid].ipk > cari) {
+        else if (listMhs[mid].ipk < cari) {
             return findBinarySearch(cari, left, mid - 1);
         }
         else {

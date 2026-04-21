@@ -5,14 +5,14 @@ public class SistemPeminjaman7 {
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
 
-        //data awal mahasiswa
+        // data awal mahasiswa
         Mahasiswa7[] daftarMhs = {
             new Mahasiswa7("22001", "Andi", "Teknik Informatika"),
             new Mahasiswa7("22002", "Budi", "Teknik Informatika"),
             new Mahasiswa7("22003", "Citra", "Sistem Informasi Bisnis")
         };
 
-        //data awal buku
+        // data awal buku
         Buku7[] daftarBuku = {
             new Buku7("B001", "Algoritma", 2020),
             new Buku7("B002", "Basis Data", 2019),
@@ -20,7 +20,7 @@ public class SistemPeminjaman7 {
             new Buku7("B004", "Fisika", 2024)
         };
 
-        //data peminjaman
+        // data peminjaman
         Peminjaman7[] daftarPinjam = {
             new Peminjaman7(daftarMhs[0], daftarBuku[0], 7),
             new Peminjaman7(daftarMhs[1], daftarBuku[1], 3),
@@ -36,12 +36,11 @@ public class SistemPeminjaman7 {
             System.out.println("2. Tampilkan Buku");
             System.out.println("3. Tampilkan Peminjaman");
             System.out.println("4. Urutkan Berdasarkan Denda");
-            System.out.println("5. Cari Berdasarkan NIM");
+            System.out.println("5. Cari Berdasarkan Nama");
             System.out.println("0. Keluar");
             System.out.print("Pilih: ");
             pilihan = sc.nextInt();
             sc.nextLine();
-            System.out.println("");
 
             switch (pilihan) {
                 case 1:
@@ -60,7 +59,7 @@ public class SistemPeminjaman7 {
                     break;
 
                 case 4:
-                    //menggunakan SELECTION SORT - Denda dari Terbesar (Descending)
+                    // selection sort (denda terbesar)
                     for (int i = 0; i < daftarPinjam.length - 1; i++) {
                         int idxMax = i;
                         for (int j = i + 1; j < daftarPinjam.length; j++) {
@@ -72,15 +71,18 @@ public class SistemPeminjaman7 {
                         daftarPinjam[idxMax] = daftarPinjam[i];
                         daftarPinjam[i] = temp;
                     }
-                    System.out.println("=== Setelah diurutkan (Denda terbesar) ===");
+
+                    System.out.println("=== Setelah diurutkan ===");
                     for (Peminjaman7 p : daftarPinjam) p.tampilPeminjaman();
                     break;
 
                 case 5:
-                    //sorting data berdasarkan NIM terlebih dahulu
+                    // sorting nama
                     for (int i = 0; i < daftarPinjam.length - 1; i++) {
                         for (int j = 0; j < daftarPinjam.length - i - 1; j++) {
-                            if (daftarPinjam[j].mhs.nim.compareTo(daftarPinjam[j+1].mhs.nim) > 0) {
+                            if (daftarPinjam[j].mhs.nama.compareToIgnoreCase(
+                                daftarPinjam[j+1].mhs.nama) > 0) {
+
                                 Peminjaman7 temp = daftarPinjam[j];
                                 daftarPinjam[j] = daftarPinjam[j+1];
                                 daftarPinjam[j+1] = temp;
@@ -88,48 +90,52 @@ public class SistemPeminjaman7 {
                         }
                     }
 
-                    System.out.print("Masukkan NIM: ");
-                    String cariNim = sc.nextLine();
-                    
-                    //binary Search
+                    System.out.print("Masukkan Nama: ");
+                    String cariNama = sc.nextLine();
+
                     int awal = 0, akhir = daftarPinjam.length - 1;
                     boolean ditemukan = false;
 
                     while (awal <= akhir) {
                         int tengah = (awal + akhir) / 2;
-                        if (daftarPinjam[tengah].mhs.nim.equals(cariNim)) {
-                            daftarPinjam[tengah].tampilPeminjaman();
+
+                        if (daftarPinjam[tengah].mhs.nama.equalsIgnoreCase(cariNama)) {
                             ditemukan = true;
-                            // cek ke kiri
+                            daftarPinjam[tengah].tampilPeminjaman();
+
+                            // kiri
                             int i = tengah - 1;
-                            while (i >= 0 && daftarPinjam[i].mhs.nim.equals(cariNim)) {
+                            while (i >= 0 && daftarPinjam[i].mhs.nama.equalsIgnoreCase(cariNama)) {
                                 daftarPinjam[i].tampilPeminjaman();
                                 i--;
                             }
 
-                             // cek ke kanan
+                            // kanan
                             int j = tengah + 1;
-                            while (j < daftarPinjam.length && daftarPinjam[j].mhs.nim.equals(cariNim)) {
-                                    daftarPinjam[j].tampilPeminjaman();
-                                    j++;
+                            while (j < daftarPinjam.length && daftarPinjam[j].mhs.nama.equalsIgnoreCase(cariNama)) {
+                                daftarPinjam[j].tampilPeminjaman();
+                                j++;
                             }
-
                             break;
-                        } else if (daftarPinjam[tengah].mhs.nim.compareTo(cariNim) < 0) {
+
+                        } else if (daftarPinjam[tengah].mhs.nama.compareToIgnoreCase(cariNama) < 0) {
                             awal = tengah + 1;
                         } else {
                             akhir = tengah - 1;
                         }
                     }
+
                     if (!ditemukan) System.out.println("Data tidak ditemukan.");
                     break;
 
                 case 0:
                     System.out.println("=== Terima Kasih ===");
                     break;
+
                 default:
                     System.out.println("Pilihan tidak valid!");
             }
+
         } while (pilihan != 0);
     }
 }

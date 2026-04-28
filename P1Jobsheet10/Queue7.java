@@ -19,7 +19,7 @@ public class Queue7 {
         } else {
             return false;
         }
-    }
+    
 
     public boolean IsFull() {
         if (size == max) {

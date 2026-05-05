@@ -1,20 +1,30 @@
 package Pertemuan11;
+import java.util.Scanner;
 public class SLLMain7 {
     public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
         SingleLinkedList7 sll = new SingleLinkedList7();
 
-        Mahasiswa7 mhs1 = new Mahasiswa7("24212200", "Alvaro","1A", 4.0);
-        Mahasiswa7 mhs2 = new Mahasiswa7("23212201", "Bimon","2B", 3.8);
-        Mahasiswa7 mhs3 = new Mahasiswa7("22212202", "Cintia","3C", 3.5);
-        Mahasiswa7 mhs4 = new Mahasiswa7("21212203", "Dirga","4D", 3.6);
+        System.out.print("Masukkan jumlah data: ");
+        int n = sc.nextInt();
+        sc.nextLine();
+        for (int i = 0; i < n; i++) {
+            System.out.println("Data mahasiswa ke-" + (i + 1));
+            System.out.print("NIM\t: ");
+            String nim = sc.nextLine();
 
-        sll.print();
-        sll.addFirst(mhs4);
-        sll.print();
-        sll.addLast(mhs1);
-        sll.print();
-        sll.insertAfter("Dirga", mhs3);
-        sll.insertAt(2, mhs2);
-        sll.print();
+            System.out.print("Nama\t: ");
+            String nama = sc.nextLine();
+
+            System.out.print("Kelas\t: ");
+            String kelas = sc.nextLine();
+
+            System.out.print("IPK\t: ");
+            double ipk = sc.nextDouble();
+            sc.nextLine();
+
+            Mahasiswa7 mhs = new Mahasiswa7(nim, nama, kelas, ipk);
+            sll.addLast(mhs);
+        }
     }
 }

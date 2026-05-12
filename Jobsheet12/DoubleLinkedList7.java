@@ -85,7 +85,10 @@ public class DoubleLinkedList7 {
         if (isEmpty()) {
             System.out.println("Linked List kosong.");
             return;
-        } 
+        } else {
+            System.out.println("Data berhasil dihapus.");
+            head.data.tampil();
+        }
         if (head == tail) {
             head = tail = null;
         } else {
@@ -93,11 +96,15 @@ public class DoubleLinkedList7 {
             head.prev = null;
         }
     }
+
     public void removeLast() {
         if (isEmpty()) {
-            System.out.println("Linked List kososng.");
+            System.out.println("Linked List kosong.");
             return;
-        } 
+        } else {
+            System.out.println("Data berhasil dihapus.");
+            tail.data.tampil();
+        }
         if (head == tail) {
             head = tail = null;
         } else {

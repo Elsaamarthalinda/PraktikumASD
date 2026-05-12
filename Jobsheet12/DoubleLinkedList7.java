@@ -56,16 +56,28 @@ public class DoubleLinkedList7 {
         }
         System.out.println("Data berhasil disisipkan setelah NIM " + keyNim);
     }
-    
+
     public void print() {
         if (isEmpty()) {
-            System.out.println("Linked List maasih kosong.");
+            System.out.println("Linked List masih kosong.");
             return;
         }
         NodeDLL7 current = head;
         while (current != null) {
             current.data.tampil();
             current = current.next;
+        }
+    }
+
+    public void printReverse() {
+        if (isEmpty()) {
+            System.out.println("Linked list masih kosong.");
+            return;
+        }
+        NodeDLL7 current = tail;
+        while (current != null) {
+            current.data.tampil();
+            current = current.prev;
         }
     }
 }

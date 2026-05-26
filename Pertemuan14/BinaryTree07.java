@@ -165,4 +165,59 @@ public class BinaryTree07 {
             }
         }
     }
+    //penambahan rekursif (no 1)
+    public void addRekursif(Mahasiswa07 mahasiswa) {
+        root = addRekursif(root, mahasiswa);
+    }
+    private Node07 addRekursif(Node07 current, Mahasiswa07 mahasiswa) {
+        if (current == null) {
+            return new Node07(mahasiswa);
+        }
+        if (mahasiswa.ipk < current.mahasiswa.ipk) {
+            current.left = addRekursif(current.left, mahasiswa);
+        } else {
+            current.right = addRekursif(current.right, mahasiswa);
+        }
+        return current;
+    }
+
+    //penambahan cari min IPK (no 2)
+    public void cariMinIPK() {
+        if (isEmpty()) {
+            System.out.println("Binary tree kosong");
+            return;
+        }
+        Node07 current = root;
+        while (current.left != null) {
+            current = current.left;
+        }
+        current.mahasiswa.tampilInformasi();
+    }
+
+    //penambahan cari max IPK (no 2)
+    public void cariMaxIPK() {
+        if (isEmpty()) {
+            System.out.println("Binary tree kosong");
+            return;
+        }
+        Node07 current = root;
+        while (current.right != null) {
+            current = current.right;
+        }
+        current.mahasiswa.tampilInformasi();
+    }
+
+    //penambahan tampil mhs ipk di atas batas (no 3)
+    public void tampilMahasiswaIPKdiAtas(double ipkBatas) {
+        tampilMahasiswaIPKdiAtasHelper(root, ipkBatas);
+    }
+    private void tampilMahasiswaIPKdiAtasHelper(Node07 current, double ipkBatas) {
+        if (current != null) {
+            tampilMahasiswaIPKdiAtasHelper(current.left, ipkBatas);
+            if (current.mahasiswa.ipk > ipkBatas) {
+                current.mahasiswa.tampilInformasi();
+            }
+            tampilMahasiswaIPKdiAtasHelper(current.right, ipkBatas);
+        }
+    }
 }

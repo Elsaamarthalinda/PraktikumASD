@@ -139,3 +139,9 @@ public class SistemPeminjaman7 {
         } while (pilihan != 0);
     }
 }
+
+
+//pengurutan berdasarkan kode pesanan
+//while (current != null && current.kodePesanan < baru.kodePesanan) {
+//    current = current.next;
+//}
